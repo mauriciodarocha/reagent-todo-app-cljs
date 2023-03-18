@@ -1,0 +1,88 @@
+body {
+  font-family: 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif;
+  max-width: 300px;
+  margin: 0 auto;
+  padding-top: 25px;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5em;
+}
+
+h1, h2, h3 {
+  color: #000;
+}
+h1 {
+  font-size: 2.5em
+}
+
+h2 {
+  font-size: 2em
+}
+
+h3 {
+  font-size: 1.5em
+}
+
+a {
+  text-decoration: none;
+  color: #09f;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.todo-list * {
+  cursor: pointer;
+  user-select: none;
+}
+
+.todo-form * {
+  box-sizing: border-box;
+}
+
+.todo-list li {
+  padding-left: 22px;
+  position: relative;
+  color: green;
+}
+
+.todo-list li.done {
+  color: lightslategray;
+  text-decoration: line-through;
+}
+
+.todo-list li.done input[type="checkbox"] {
+  opacity: 0.4;
+}
+
+.todo-form .td-form-input-container {
+  border: 1px solid #999;
+  display: flex;
+}
+
+.todo-form input[type="text"] {
+  min-height: 1.8rem;
+  padding: 0 10px;
+  border: 0;
+  flex-grow: 1;
+}
+
+.todo-form button {
+  min-height: 1.8rem;
+  width: 40%;
+  border: 0;
+}
+
+.todo-list input[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  margin: 7px 5px !important;
+}
+
+.td-form-title {
+  font-size: 0.875rem;
+  margin: 0;
+  font-weight: 100;
+}
