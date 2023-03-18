@@ -19,7 +19,7 @@ or run
 npx shadow-cljs watch app
 ```
 
-### Start a ClojureScript REPL
+## Start a ClojureScript REPL
 
 ```
 npx shadow-cljs browser-repl
