@@ -12,22 +12,34 @@
   (assoc-in @todos [index :status]
             (if (= (:status (get @todos index)) "done") "pending" "done")))
 
+(defn remove-item [index]
+    (reset! todos (vec (keep-indexed #(when-not (= index %1) %2) @todos))))
+
 (defn todo-item
   [index item]
   [:li {:class (if (not (= "done" (:status item))) "pending" "done")}
    [:label
     [:input {:type "checkbox"
-             :defaultChecked (if (= (:status item) "done") true false)
-             :on-change (fn [e] (reset! todos (change-status index)))
+             :checked (not (= "pending" (:status item)))
+             :on-change (fn [e] 
+                          (reset! todos (change-status index))
+                          )
              }]
-    [:span (:desc item)]]])
+    [:span (:desc item)]]
+   [:button {:class (str/join " " ["btn-delete" (if (= (:status item) "done") "show" "hide")])
+             :on-click (fn [e] (remove-item index))
+             }]])
 
 (defn todo-list []
-  [:ul {:class "todo-list" :style {:list-style "none" :padding "0"}}
-   (let [list (map-indexed vector @todos)]
-     (for [item list]
-       ^{:key (str "todo-" (get item 0))}
-       [todo-item (get item 0) (get item 1)]))])
+  [:div {:class "todo-list"}
+   (if (> (count @todos) 0)
+    [:ul {:class "td-list" :style {:list-style "none" :padding "0"}}
+     (let [list (map-indexed vector @todos)]
+       (for [item list]
+         ^{:key (str "todo-" (get item 0))}
+         [todo-item (get item 0) (get item 1)]))]
+    [:span {:class "empty-list"} "Nothing to do. Add items to your list."])]
+  )
 
 (defn todo-form []
   (let [new-item (r/atom "")]

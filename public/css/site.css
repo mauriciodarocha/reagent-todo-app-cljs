@@ -33,28 +33,69 @@ a:hover {
   text-decoration: underline;
 }
 
-.todo-list * {
+.todo-list {
+  margin: 16px 0;
+}
+
+.todo-list .td-list {
+  margin: 0;
+}
+
+.todo-list .td-list * {
   cursor: pointer;
   user-select: none;
 }
 
-.todo-form * {
-  box-sizing: border-box;
+.todo-list li:hover {
+  background-color: #e1e1e1;
 }
 
 .todo-list li {
+  display: flex;
   padding-left: 22px;
   position: relative;
   color: green;
+  position: relative;
 }
 
 .todo-list li.done {
   color: lightslategray;
   text-decoration: line-through;
+  padding-right: 22px;
 }
 
 .todo-list li.done input[type="checkbox"] {
   opacity: 0.4;
+}
+
+.todo-list li label {
+  flex-grow: 1;
+}
+
+.todo-list input[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  margin: 7px 5px !important;
+}
+
+.todo-list .btn-delete {
+  height: 1rem;
+  border: none;
+  background: url(/img/icons8-delete-trash-24.png) no-repeat;
+  background-size: contain;
+  width: 1rem;
+  display: none;
+  position: absolute;
+  top: 3px;
+  right: 4px;
+}
+
+.todo-list .btn-delete.show {
+  display: initial;
+}
+
+.todo-form * {
+  box-sizing: border-box;
 }
 
 .todo-form .td-form-input-container {
@@ -73,12 +114,6 @@ a:hover {
   min-height: 1.8rem;
   width: 40%;
   border: 0;
-}
-
-.todo-list input[type="checkbox"] {
-  position: absolute;
-  left: 0;
-  margin: 7px 5px !important;
 }
 
 .td-form-title {
